@@ -6,7 +6,7 @@ export const profile = {
   name: 'Bhargava Nandan',
   role: 'Video Editor',
   portrait: '/figma/bhargava-portrait.png',
-  bio: `I'm a creative professional specializing in video editing, graphic design, and digital content creation. Passionate about visual storytelling, I transform ideas into engaging visual experiences through creative editing, thoughtful design, and compelling content. I focus on combining creativity, technical skills, and attention to detail to deliver impactful work.`,
+  bio: `I'm a creative individual with a strong interest in video editing, graphic design, and digital content creation. Passionate about visual storytelling, I transform ideas into engaging visual experiences through creative editing, thoughtful design, and compelling content. I focus on combining creativity, technical skills, and attention to detail to deliver impactful work.`,
 };
 
 export const contact = {
