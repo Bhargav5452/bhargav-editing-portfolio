@@ -14,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, background: '#0d0d0d', overflow: 'hidden' }}>
+      <head>
+        <link rel="stylesheet" href="/tailwind.css" />
+      </head>
+      <body suppressHydrationWarning>
         <LoaderGate>
           {children}
         </LoaderGate>

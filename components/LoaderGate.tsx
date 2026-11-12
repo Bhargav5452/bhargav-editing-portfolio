@@ -1,28 +1,33 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LoaderScreen from '@/components/LoaderScreen';
+import { LoaderProvider, useLoader } from '@/components/LoaderContext';
 
 export default function LoaderGate({ children }: { children: React.ReactNode }) {
-  // null = not yet determined (avoid flash on return visits)
-  const [showLoader, setShowLoader] = useState<boolean | null>(null);
+  return (
+    <LoaderProvider>
+      <LoaderGateInner>{children}</LoaderGateInner>
+    </LoaderProvider>
+  );
+}
 
-  useEffect(() => {
-    const hasVisited = sessionStorage.getItem('bnk_visited');
-    if (hasVisited) {
-      setShowLoader(false);
-    } else {
-      setShowLoader(true);
-      sessionStorage.setItem('bnk_visited', '1');
-    }
-  }, []);
-
-  // Don't render anything until we know (prevents flash)
-  if (showLoader === null) return null;
+function LoaderGateInner({ children }: { children: React.ReactNode }) {
+  const [showLoader, setShowLoader] = useState(true);
+  const { setIsLoaded } = useLoader();
 
   return (
     <>
-      {showLoader && <LoaderScreen onComplete={() => setShowLoader(false)} />}
+      {showLoader && (
+        <LoaderScreen
+          onStartCollapse={() => {
+            setIsLoaded(true);
+          }}
+          onComplete={() => {
+            setShowLoader(false);
+          }}
+        />
+      )}
       {children}
     </>
   );
