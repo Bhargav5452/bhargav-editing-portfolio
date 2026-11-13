@@ -32,37 +32,26 @@ export default function PortfolioVideo({
 
     // Ensure audio starts muted so modern browsers allow programmatic play
     video.muted = true;
-    video.pause();
+
+    const playVideo = () => {
+      if (!manualPausedRef.current && video.paused) {
+        video.play().catch(() => {});
+      }
+    };
 
     // IntersectionObserver: Only start playing when the user enters the section
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // User entered section: start or resume playback
-            if (!manualPausedRef.current) {
-              // If entering for the first time, ensure it starts cleanly from beginning
-              if (!hasStartedRef.current) {
-                video.currentTime = 0;
-                hasStartedRef.current = true;
-              }
-              video
-                .play()
-                .then(() => setIsPlaying(true))
-                .catch(() => {
-                  setIsPlaying(false);
-                });
-            }
+            playVideo();
           } else {
-            // User scrolled away from section: pause immediately
             video.pause();
-            setIsPlaying(false);
           }
         });
       },
       {
-        threshold: 0.2, // Triggers when at least 20% of the video section is visible
-        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1, // 10% visible triggers play smoothly
       }
     );
 
@@ -83,13 +72,11 @@ export default function PortfolioVideo({
     if (videoRef.current.paused) {
       manualPausedRef.current = false;
       setManualPaused(false);
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.play().catch(() => {});
     } else {
       manualPausedRef.current = true;
       setManualPaused(true);
       videoRef.current.pause();
-      setIsPlaying(false);
     }
   };
 
@@ -116,6 +103,8 @@ export default function PortfolioVideo({
         preload="auto"
         className={className}
         style={style}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
       />
 
       {/* Floating Audio Button (Bottom-Right) - subtle on hover */}
