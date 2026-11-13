@@ -6,7 +6,7 @@ import FigmaTypewriter from '@/components/FigmaTypewriter';
 import PortfolioVideo from '@/components/PortfolioVideo';
 import HeroMonitor from '@/components/HeroMonitor';
 import AboutSection from '@/components/AboutSection';
-import DesktopRecommendationToast from '@/components/DesktopRecommendationToast';
+import MobileDesktopGate from '@/components/MobileDesktopGate';
 
 export default function PortfolioPage() {
   return (
@@ -116,8 +116,8 @@ export default function PortfolioPage() {
         />
       </footer>
 
-      {/* Floating recommendation pill on mobile devices */}
-      <DesktopRecommendationToast />
+      {/* Mobile desktop site message overlay — opens website on click */}
+      <MobileDesktopGate />
 
     </div>
   );
