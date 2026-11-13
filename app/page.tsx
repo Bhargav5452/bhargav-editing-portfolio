@@ -99,12 +99,13 @@ export default function PortfolioPage() {
       {/* ══════════════════════════════════════════════════════
           5. TEDX SECTION (Node 37:314 / 42:516)
           VIDEO 3: TedxVBIT Glimpse Final.mp4 (AUTOPLAY)
+          Full width to the edges, matching Figma
           ══════════════════════════════════════════════════════ */}
-      <section className="bg-[#fefefe] h-auto lg:h-[792px] overflow-hidden relative shrink-0 w-full flex items-center justify-center py-6 sm:py-10 lg:py-[48px] px-3 sm:px-6">
-        <div className="w-full max-w-[1282px] h-auto max-h-[721px] rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-2xl bg-black">
+      <section className="bg-[#fefefe] w-full flex items-center justify-center overflow-hidden relative shrink-0">
+        <div className="w-full h-auto aspect-video bg-black">
           <PortfolioVideo
             src={videos.tedx}
-            className="w-full h-full object-contain block mx-auto bg-black"
+            className="w-full h-full object-cover block"
           />
         </div>
       </section>
