@@ -76,12 +76,12 @@ export default function FigmaTypewriter({
       <span className={className} style={style}>
         {visibleText}
       </span>
-      {/* Exact cursor from Figma Node 33:5: width 2.4px, height 64.8px, #0040ff */}
+      {/* Dynamic responsive cursor matching Figma Node 33:5: width 2.4px, #0040ff, scales with font */}
       <span
         className="cursor-blink inline-block"
         style={{
           width: '2.4px',
-          height: '64.8px',
+          height: 'clamp(28px, 4.5vw, 64.8px)',
           backgroundColor: '#0040ff',
           marginLeft: '4px',
           verticalAlign: 'middle',

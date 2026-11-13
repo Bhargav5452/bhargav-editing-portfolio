@@ -36,17 +36,17 @@ export default function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full max-w-[1440px] px-6 lg:px-[64px] py-[64px] bg-[#111111]"
+      className="w-full max-w-[1440px] px-6 lg:px-[64px] py-10 lg:py-[64px] bg-[#111111]"
     >
       {/* 4 Columns Container matching exact Figma layout Node 2:2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[400px_240px_216px_216px] gap-[48px] lg:gap-[64px] xl:gap-[80px] items-start justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[400px_240px_216px_216px] gap-10 lg:gap-[64px] xl:gap-[80px] items-start justify-center">
 
         {/* ── COL 1: Profile and contact (Node 2:3) ── */}
         <div className="flex flex-col items-start w-full max-w-[400px]">
           
-          {/* Portrait (Node 2:20, size: 224px) */}
+          {/* Portrait (Node 2:20, size: 224px, responsive on mobile) */}
           <div
-            className="relative size-[224px] rounded-full overflow-hidden border-2 border-[rgba(255,255,255,0.14)] shadow-2xl bg-[#1a1a1a] mb-[16px] shrink-0 group transition-all"
+            className="relative size-[180px] sm:size-[224px] rounded-full overflow-hidden border-2 border-[rgba(255,255,255,0.14)] shadow-2xl bg-[#1a1a1a] mb-[16px] shrink-0 group transition-all"
             style={{
               transform: inView ? 'translateY(0) scale(1)' : 'translateY(28px) scale(0.88)',
               opacity: inView ? 1 : 0,
@@ -72,12 +72,12 @@ export default function AboutSection() {
             }}
           >
             <h1
-              className="text-[#e3c40a] text-[40px] leading-[50px] font-black tracking-normal"
+              className="text-[#e3c40a] text-[32px] sm:text-[40px] leading-[42px] sm:leading-[50px] font-black tracking-normal"
               style={{ fontFamily: "'Elsie', serif" }}
             >
               {profile.name}
             </h1>
-            <p className="text-[#f5f5f2] text-[20px] leading-[28px] font-normal font-sans mt-1">
+            <p className="text-[#f5f5f2] text-lg sm:text-[20px] leading-[26px] sm:leading-[28px] font-normal font-sans mt-1">
               {profile.role}
             </p>
           </div>
