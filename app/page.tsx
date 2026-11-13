@@ -6,11 +6,16 @@ import FigmaTypewriter from '@/components/FigmaTypewriter';
 import PortfolioVideo from '@/components/PortfolioVideo';
 import HeroMonitor from '@/components/HeroMonitor';
 import AboutSection from '@/components/AboutSection';
-import MobileDesktopGate from '@/components/MobileDesktopGate';
+import MobileRestrictionScreen from '@/components/MobileRestrictionScreen';
 
 export default function PortfolioPage() {
   return (
-    <div className="bg-[#111111] text-[#ffffff] min-h-screen flex flex-col items-center w-full selection:bg-[#e3c40a] selection:text-black">
+    <>
+      {/* Mobile Restriction Screen — displayed ONLY on phones (< 768px) */}
+      <MobileRestrictionScreen />
+
+      {/* Main Portfolio Website — displayed ONLY on Desktop & Tablet (>= 768px, or mobile with "Desktop site" enabled) */}
+      <div className="hidden md:flex bg-[#111111] text-[#ffffff] min-h-screen flex-col items-center w-full selection:bg-[#e3c40a] selection:text-black">
       
       {/* ══════════════════════════════════════════════════════
           1. HERO SECTION — Portfolio Editor Artwork (Monitor Panel)
@@ -116,9 +121,7 @@ export default function PortfolioPage() {
         />
       </footer>
 
-      {/* Mobile desktop site message overlay — opens website on click */}
-      <MobileDesktopGate />
-
-    </div>
+      </div>
+    </>
   );
 }

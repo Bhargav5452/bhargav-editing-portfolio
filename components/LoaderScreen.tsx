@@ -112,7 +112,7 @@ export default function LoaderScreen({
       */}
       <aside
         aria-label="Loading Screen"
-        className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden flex flex-col justify-end"
+        className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden hidden md:flex flex-col justify-end"
         style={{
           perspective: '1000px',
         }}
